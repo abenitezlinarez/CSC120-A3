@@ -16,6 +16,7 @@ class Conversation implements ConversationRequirements {
   String am = "am";
   String you = "you";
   String my = "my";
+  String your = "your";
   String period = ".";
   String[] cannedResponses = {"Hmmm....", "Wow!", "That's nice!", "Love that"};
   
@@ -65,73 +66,40 @@ class Conversation implements ConversationRequirements {
    * @param inputString the users last line of input
    * @return mirrored or canned response to user input  
    */
-  public String respond(String inputString) {   
-      if (inputString.contains(I)){
-        String replacedStatement = inputString.replaceAll(I, "You");
-        String replacedStatement2 = replacedStatement.replaceAll(me, "You");
-        String replacedStatement3 = replacedStatement2.replaceAll(am, "are");
-        String replacedStatement4 = replacedStatement3.replaceAll(you, "I");
-        String replacedStatement5 = replacedStatement4.replaceAll(my, "your");
-        String ReplacedStatemnent6 = replacedStatement5.replace(period, "?");
+  public String respond(String inputString) {  
+        if (inputString.contains(I)){
+        String replacedStatement = inputString.replaceAll(I, "you");
+        String replacedStatement3 = replacedStatement.replaceAll(me, "you");
+        String replacedStatement4 = replacedStatement3.replaceAll(am, "are");
+        String replacedStatement5 = replacedStatement4.replaceAll(your, "my");
+        String replacedStatement6 = replacedStatement5.replaceAll(my, "your");
+        String ReplacedStatemnent7 = replacedStatement6.replace(period, "?");
         transcript.add(inputString);
-        transcript.add(ReplacedStatemnent6);
-        return(ReplacedStatemnent6);
+        transcript.add(ReplacedStatemnent7);
+        return(ReplacedStatemnent7);
+        }else if(inputString.contains(you)){
+          String replacedStatement = inputString.replaceAll(you, "I");    
+          String replacedStatement3 = replacedStatement.replaceAll(me, "you");
+          String replacedStatement4 = replacedStatement3.replaceAll(am, "are");
+          String replacedStatement5 = replacedStatement4.replaceAll(your, "my");
+          String replacedStatement6 = replacedStatement5.replaceAll(my, "your");
+          String ReplacedStatemnent7 = replacedStatement6.replace(period, "?");
+          transcript.add(inputString);
+          transcript.add(ReplacedStatemnent7);
+          return(ReplacedStatemnent7);
+        }else{
+        String replacedStatement = inputString.replaceAll(you, "I");    
+        String replacedStatement2 = replacedStatement.replaceAll(I, "you");
+        String replacedStatement3 = replacedStatement2.replaceAll(me, "you");
+        String replacedStatement4 = replacedStatement3.replaceAll(am, "are");
+        String replacedStatement5 = replacedStatement4.replaceAll(your, "my");
+        String replacedStatement6 = replacedStatement5.replaceAll(my, "your");
+        String ReplacedStatemnent7 = replacedStatement6.replace(period, "?");
 
-      }
-      else if (inputString.contains(me)){
-        String replacedStatement = inputString.replaceAll(I, "You");
-        String replacedStatement2 = replacedStatement.replaceAll(me, "You");
-        String replacedStatement3 = replacedStatement2.replaceAll(am, "are");
-        String replacedStatement4 = replacedStatement3.replaceAll(you, "I");
-        String replacedStatement5 = replacedStatement4.replaceAll(my, "your");
-        String ReplacedStatemnent6 = replacedStatement5.replace(period, "?");
         transcript.add(inputString);
-        transcript.add(ReplacedStatemnent6);
-        return(ReplacedStatemnent6);
-
+        transcript.add(ReplacedStatemnent7);
+        return(ReplacedStatemnent7);
         }
-      else if (inputString.contains(am)){
-        String replacedStatement = inputString.replaceAll(I, "You");
-        String replacedStatement2 = replacedStatement.replaceAll(me, "You");
-        String replacedStatement3 = replacedStatement2.replaceAll(am, "are");
-        String replacedStatement4 = replacedStatement3.replaceAll(you, "I");
-        String replacedStatement5 = replacedStatement4.replaceAll(my, "your");
-        String ReplacedStatemnent6 = replacedStatement5.replace(period, "?");
-        transcript.add(inputString);
-        transcript.add(ReplacedStatemnent6);
-        return(ReplacedStatemnent6);
-
-        }
-      else if (inputString.contains(you)){
-        String replacedStatement = inputString.replaceAll(I, "You");
-        String replacedStatement2 = replacedStatement.replaceAll(me, "You");
-        String replacedStatement3 = replacedStatement2.replaceAll(am, "are");
-        String replacedStatement4 = replacedStatement3.replaceAll(you, "I");
-        String replacedStatement5 = replacedStatement4.replaceAll(my, "your");
-        String ReplacedStatemnent6 = replacedStatement5.replace(period, "?");
-        transcript.add(inputString);
-        transcript.add(ReplacedStatemnent6);
-        return(ReplacedStatemnent6);
-
-        }
-      else if (inputString.contains(my)){
-        String replacedStatement = inputString.replaceAll(I, "You");
-        String replacedStatement2 = replacedStatement.replaceAll(me, "You");
-        String replacedStatement3 = replacedStatement2.replaceAll(am, "are");
-        String replacedStatement4 = replacedStatement3.replaceAll(you, "I");
-        String replacedStatement5 = replacedStatement4.replaceAll(my, "your");
-        String ReplacedStatemnent6 = replacedStatement5.replace(period, "?");
-        transcript.add(inputString);
-        transcript.add(ReplacedStatemnent6);
-        return(ReplacedStatemnent6);
-      
-      }else{
-        int index = random.nextInt(cannedResponses.length);
-        String randomResponse = cannedResponses[index];
-        transcript.add(inputString);
-        transcript.add(randomResponse);
-        return(randomResponse);
-      }
   }
 
   public static void main(String[] arguments) {
